@@ -3,10 +3,18 @@
   <component name="Play2ExcludedModulesSettings">
     <option name="INFO">
       <map>
+        <entry key="ScalaAPI">
+          <value>
+            <ProjectSettingsEntry>
+              <option name="playDistrPath" value="$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/jars/play_2.11-2.4.8.jar" />
+            </ProjectSettingsEntry>
+          </value>
+        </entry>
         <entry key="root">
           <value>
             <ProjectSettingsEntry>
-              <option name="confDir" value="C:\development\GIT\untitled\app" />
+              <option name="sourceDir" value="C:\development\GIT\ScalaAPI\app" />
+              <option name="confDir" value="C:\development\GIT\ScalaAPI\app" />
               <option name="templateImports">
                 <list>
                   <option value="models._" />
@@ -23,7 +31,7 @@
                   <option value="controllers.Assets.Asset" />
                 </list>
               </option>
-              <option name="uri" value="/C:/development/GIT/untitled" />
+              <option name="uri" value="/C:/development/GIT/ScalaAPI" />
             </ProjectSettingsEntry>
           </value>
         </entry>
