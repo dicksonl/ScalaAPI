@@ -34,7 +34,6 @@ class Application extends Controller {
     data.cache
 
     var results = new ListBuffer[ReducedUnderSpeeding]
-
 //      Leeds BOX
   //    53.97628192530913, -1.8656158447265625 TL
   //    53.98112760380475, -1.1130523681640625  TR
@@ -47,37 +46,36 @@ class Application extends Controller {
 //      51.63847621195153, -0.1682281494140625
 
     data.collect.foreach(row => {
-      val toAdd = new ReducedUnderSpeeding(
-        row.getInt("underspeed5below"),
-        row.getInt("underspeed5tlt10"),
-        row.getInt("underspeed10tlt15"),
-        row.getInt("underspeed15tlt20"),
-        row.getInt("underspeed20tlt25"),
-        row.getInt("underspeed25tlt30"),
-        row.getInt("underspeed30tlt35"),
-        row.getInt("underspeed35tlt40"),
-        row.getInt("underspeed40tlt45"),
-        row.getInt("underspeed45tlt50"),
-        row.getInt("underspeed50tlt55"),
-        row.getInt("underspeed55tlt60"),
-        row.getInt("underspeed60tlt65"),
-        row.getInt("underspeed65tlt70"),
-        row.getInt("underspeed70tlt75"),
-        row.getInt("underspeed75tlt80"),
-        row.getInt("underspeed80tlt85"),
-        row.getInt("underspeed85tlt90"),
-        row.getInt("underspeed90tlt95"),
-        row.getInt("underspeed95above"),
+      val toAdd = new ReducedUnderSpeeding (
+        (row.getInt("underspeed5below")* 0.05) +
+        (row.getInt("underspeed5tlt10")* 0.1) +
+        (row.getInt("underspeed10tlt15")* 0.15) +
+        (row.getInt("underspeed15tlt20")* 0.2) +
+        (row.getInt("underspeed20tlt25")* 0.25) +
+        (row.getInt("underspeed25tlt30")* 0.3) +
+        (row.getInt("underspeed30tlt35")* 0.35) +
+        (row.getInt("underspeed35tlt40")* 0.4) +
+        (row.getInt("underspeed40tlt45")* 0.45) +
+        (row.getInt("underspeed45tlt50")* 0.5) +
+        (row.getInt("underspeed50tlt55")* 0.55) +
+        (row.getInt("underspeed55tlt60")* 0.6) +
+        (row.getInt("underspeed60tlt65")* 0.65) +
+        (row.getInt("underspeed65tlt70")* 0.7) +
+        (row.getInt("underspeed70tlt75")* 0.75) +
+        (row.getInt("underspeed75tlt80")* 0.8) +
+        (row.getInt("underspeed80tlt85")* 0.85) +
+        (row.getInt("underspeed85tlt90")* 0.9) +
+        (row.getInt("underspeed90tlt95")* 0.95) +
+        (row.getInt("underspeed95above")* 1),
         row.getDouble("latitude"),
         row.getDouble("longitude")
       )
-
       results += toAdd
     })
 
     implicit val formats = org.json4s.DefaultFormats
     var json = write(results)
 
-    Ok(views.html.index(json))
+    Ok(json)
   }
 }
